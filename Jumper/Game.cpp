@@ -1,9 +1,15 @@
 #include "Game.h"
-#include "ImageManager.h"
+#include "LevelGenerator.h"
 #include "Jumperpch.h"
 
-Remorse::Jumper::Game::Game() : window(sf::VideoMode(WIDTH_WINDOW, HEIGHT_WINDOW), "Jumper Game")
+Remorse::Jumper::Game::Game() :
+	window(sf::VideoMode(WIDTH_WINDOW, HEIGHT_WINDOW), "Jumper Game"), 
+	_levelGenerator(std::make_unique<LevelGenerator>())
+
 {	
+	_levelGenerator->imageManager->AddBackground();
+	_levelGenerator->GenerateLevel();
+	_levelGenerator->imageManager->AddPlayer();
 
 }
 
@@ -33,13 +39,9 @@ void Remorse::Jumper::Game::Update()
 
 void Remorse::Jumper::Game::Render()
 {
-	ImageManager* _imageManager = new ImageManager();
-
 	std::vector<sf::Sprite>::iterator it;
-	for (it = _imageManager->renderList.begin(); it < _imageManager->renderList.end(); it++)
+	for (it = _levelGenerator->imageManager->renderList.begin(); it < _levelGenerator->imageManager->renderList.end(); it++)
 	{
 		window.draw(*it);
 	}
-
-	delete _imageManager;
 }

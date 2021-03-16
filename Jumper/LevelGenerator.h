@@ -9,6 +9,10 @@ namespace Remorse
 		LevelGenerator();
 		~LevelGenerator();
 
-		ImageManager* imageManager;
+		std::unique_ptr<ImageManager> imageManager;
+
+		void GenerateLevel();
+	private:
+		int spawnTotalLevel;
 	};
 }

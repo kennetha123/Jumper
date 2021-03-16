@@ -10,8 +10,15 @@ namespace Remorse
 		~ImageManager();
 
 		void LoadImage();
-		void AddSprite();
+
+		void AddBackground();
+		void AddPlayer();
+		void AddPlatform(int x , int y);
+
 	public:
+		std::vector<sf::Sprite> renderList;
+
+	private:
 		sf::Texture textureBackground;
 		sf::Texture texturePlatform;
 		sf::Texture texturePlayer;
@@ -20,6 +27,5 @@ namespace Remorse
 		sf::Sprite spritePlatform;
 		sf::Sprite spritePlayer;
 
-		std::vector<sf::Sprite> renderList;
 	};
 }
