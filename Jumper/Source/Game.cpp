@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "LevelGenerator.h"
+#include "Generator/LevelGenerator.h"
 #include "Jumperpch.h"
 
 Remorse::Jumper::Game::Game() :

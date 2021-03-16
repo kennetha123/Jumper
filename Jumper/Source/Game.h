@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "LevelGenerator.h"
+#include "Generator/LevelGenerator.h"
 namespace Remorse
 {
 	namespace Jumper
