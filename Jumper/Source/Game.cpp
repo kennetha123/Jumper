@@ -3,19 +3,17 @@
 #include "Jumperpch.h"
 
 Remorse::Jumper::Game::Game() :
-	window(sf::VideoMode(WIDTH_WINDOW, HEIGHT_WINDOW), "Jumper Game"), 
-	_levelGenerator(std::make_unique<LevelGenerator>())
-
+	window(sf::VideoMode(WIDTH_WINDOW, HEIGHT_WINDOW), "Jumper Game")
 {	
-	_levelGenerator->imageManager->AddBackground();
-	_levelGenerator->GenerateLevel();
-	_levelGenerator->imageManager->AddPlayer();
+	window.setFramerateLimit(60);
 
+
+	levelGenerator.GenerateLevel();
 }
 
 Remorse::Jumper::Game::~Game()
 {
-	
+
 }
 
 void Remorse::Jumper::Game::Update()
@@ -30,18 +28,15 @@ void Remorse::Jumper::Game::Update()
 				window.close();
 			}
 		}
-
 		window.clear();
 		Render();
+		input.InputUpdate(player);
 		window.display();
 	}
 }
 
 void Remorse::Jumper::Game::Render()
 {
-	std::vector<sf::Sprite>::iterator it;
-	for (it = _levelGenerator->imageManager->renderList.begin(); it < _levelGenerator->imageManager->renderList.end(); it++)
-	{
-		window.draw(*it);
-	}
+	levelGenerator.DrawLevel(window);
+	player.DrawPlayer(window);
 }

@@ -1,6 +1,5 @@
 #pragma once
-#include "Render/ImageManager.h"
-
+#include <SFML/Graphics.hpp>
 namespace Remorse
 {
 	class LevelGenerator
@@ -9,10 +8,22 @@ namespace Remorse
 		LevelGenerator();
 		~LevelGenerator();
 
-		std::unique_ptr<ImageManager> imageManager;
-
 		void GenerateLevel();
+		void DrawLevel(sf::RenderWindow& window);
+
 	private:
+		void AddBackground();
+		void AddPlatform(const int& x, const int& y);
+
+	private:
+		// Background
+		sf::Texture textureBackground;
+		sf::Sprite spriteBackground;
+
+		// Platform
+		sf::Texture texturePlatform;
+		std::vector<sf::Sprite> spritePlatforms;
+
 		int spawnTotalLevel;
 	};
 }

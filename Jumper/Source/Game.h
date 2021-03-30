@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Generator/LevelGenerator.h"
+#include "Player/Player.h"
+#include "Input/Input.h"
 namespace Remorse
 {
 	namespace Jumper
@@ -14,8 +16,13 @@ namespace Remorse
 			void Update();
 			void Render();
 
+		private:
 			sf::RenderWindow window;
-			std::unique_ptr<LevelGenerator> _levelGenerator;
+
+		private:
+			LevelGenerator levelGenerator;
+			Input input;
+			Player player;
 		};
 	}
 }
