@@ -11,6 +11,8 @@ namespace Remorse
 		void GenerateLevel();
 		void DrawLevel(sf::RenderWindow& window);
 
+		std::vector<sf::Sprite> spritePlatforms;
+
 	private:
 		void AddBackground();
 		void AddPlatform(const int& x, const int& y);
@@ -22,7 +24,6 @@ namespace Remorse
 
 		// Platform
 		sf::Texture texturePlatform;
-		std::vector<sf::Sprite> spritePlatforms;
 
 		int spawnTotalLevel;
 	};

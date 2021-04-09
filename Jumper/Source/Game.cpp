@@ -31,6 +31,7 @@ void Remorse::Jumper::Game::Update()
 		window.clear();
 		Render();
 		input.InputUpdate(player);
+		input.PlatformTouch(player, levelGenerator.spritePlatforms);
 		window.display();
 	}
 }
