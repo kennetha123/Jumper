@@ -32,12 +32,14 @@ void Remorse::Jumper::Game::Update()
 		Render();
 		input.InputUpdate(player);
 		input.PlatformTouch(player, levelGenerator.spritePlatforms);
+
+
 		window.display();
 	}
 }
 
 void Remorse::Jumper::Game::Render()
 {
-	levelGenerator.DrawLevel(window);
+	levelGenerator.DrawLevel(window, player);
 	player.DrawPlayer(window);
 }

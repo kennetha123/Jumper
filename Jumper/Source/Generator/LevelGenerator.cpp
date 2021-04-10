@@ -1,8 +1,7 @@
 #include "Jumperpch.h"
 #include "LevelGenerator.h"
 
-Remorse::LevelGenerator::LevelGenerator() : 
-	spawnTotalLevel(10)
+Remorse::LevelGenerator::LevelGenerator()
 {
 	AddBackground();
 }
@@ -16,13 +15,13 @@ void Remorse::LevelGenerator::GenerateLevel()
 	srand(time(0));
 	for (int i = 0; i < spawnTotalLevel; i++)
 	{
-		int randomX = rand() % WIDTH_WINDOW;
-		int randomY = rand() % HEIGHT_WINDOW;
-		AddPlatform(randomX, randomY);
+		randomX[i] = rand() % WIDTH_WINDOW;
+		randomY[i] = rand() % HEIGHT_WINDOW;
+		AddPlatform(randomX[i], randomY[i]);
 	}
 }
 
-void Remorse::LevelGenerator::DrawLevel(sf::RenderWindow& window)
+void Remorse::LevelGenerator::DrawLevel(sf::RenderWindow& window, Player& player)
 {
 	window.draw(spriteBackground);
 
@@ -30,6 +29,25 @@ void Remorse::LevelGenerator::DrawLevel(sf::RenderWindow& window)
 	{
 		window.draw(spritePlatforms[i]);
 	}
+
+	UpdateLevel(player);
+}
+
+void Remorse::LevelGenerator::UpdateLevel(Player& player)
+{
+	if (player.Y < 200)
+	{
+		for (int i = 0; i < spawnTotalLevel; i++)
+		{
+			player.Y = 200;
+			spritePlatforms[i].setPosition(randomX[i], spritePlatforms[i].getPosition().y - player.deltaY);
+			if (spritePlatforms[i].getPosition().y > HEIGHT_WINDOW)
+			{
+				spritePlatforms[i].setPosition(rand() % 400, 0);
+			}
+		}
+	}
+
 }
 
 void Remorse::LevelGenerator::AddBackground()

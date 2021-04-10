@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Player/Player.h"
+
 namespace Remorse
 {
 	class LevelGenerator
@@ -9,9 +11,11 @@ namespace Remorse
 		~LevelGenerator();
 
 		void GenerateLevel();
-		void DrawLevel(sf::RenderWindow& window);
+		void DrawLevel(sf::RenderWindow& window, Player& player);
 
 		std::vector<sf::Sprite> spritePlatforms;
+
+		void UpdateLevel(Player& player);
 
 	private:
 		void AddBackground();
@@ -25,6 +29,8 @@ namespace Remorse
 		// Platform
 		sf::Texture texturePlatform;
 
-		int spawnTotalLevel;
+	private:
+		static constexpr int spawnTotalLevel = 10;
+		int randomX[spawnTotalLevel], randomY[spawnTotalLevel];
 	};
 }

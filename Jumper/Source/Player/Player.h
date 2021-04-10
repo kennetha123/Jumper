@@ -11,7 +11,6 @@ namespace Remorse
 
 		void DrawPlayer(sf::RenderWindow& window);
 
-
 		float deltaX = 0;
 		float deltaY = 0;
 		int X;
