@@ -16,7 +16,7 @@ namespace Remorse
 		std::vector<sf::Sprite> spritePlatforms;
 
 		void UpdateLevel(Player& player);
-
+		unsigned int score;
 	private:
 		void AddBackground();
 		void AddPlatform(const int& x, const int& y);

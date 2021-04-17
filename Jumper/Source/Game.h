@@ -3,6 +3,7 @@
 #include "Generator/LevelGenerator.h"
 #include "Player/Player.h"
 #include "Input/Input.h"
+#include "Score/Score.h"
 namespace Remorse
 {
 	namespace Jumper
@@ -21,6 +22,7 @@ namespace Remorse
 
 		private:
 			LevelGenerator levelGenerator;
+			Score score;
 			Input input;
 			Player player;
 		};

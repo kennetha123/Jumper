@@ -37,6 +37,7 @@ void Remorse::LevelGenerator::UpdateLevel(Player& player)
 {
 	if (player.Y < 200)
 	{
+		score += 1;
 		for (int i = 0; i < spawnTotalLevel; i++)
 		{
 			player.Y = 200;
@@ -46,6 +47,10 @@ void Remorse::LevelGenerator::UpdateLevel(Player& player)
 				spritePlatforms[i].setPosition(rand() % 400, 0);
 			}
 		}
+	}
+	else
+	{
+		score = 0;
 	}
 
 }
